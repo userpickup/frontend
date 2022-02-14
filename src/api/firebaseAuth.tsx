@@ -1,7 +1,7 @@
 import React from "react";
 import "firebase/auth";
 import firebase from "./firebase";
-import { User } from "./interface";
+import { User } from "../interface";
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -30,6 +30,20 @@ export const signInWithEmailAndPassword = async (
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState<User>(null);
 
-  const value = {};
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  React.useEffect(() => {
+    return firebase.auth().onAuthStateChanged((user) => {
+      if (!user) return null;
+      setCurrentUser({ id: user.uid, email: user.email, uid: user.uid });
+    });
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ currentUser: currentUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useCurrentUser = () => {
+  return React.useContext(AuthContext).currentUser;
 };
