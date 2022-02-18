@@ -29,16 +29,20 @@ export const signInWithEmailAndPassword = async (
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState<User>(null);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
     return firebase.auth().onAuthStateChanged((user) => {
       if (!user) return null;
       setCurrentUser({ id: user.uid, email: user.email, uid: user.uid });
+      setLoading(false);
     });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser: currentUser }}>
+    <AuthContext.Provider
+      value={{ currentUser: currentUser, loading: loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -46,4 +50,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 export const useCurrentUser = () => {
   return React.useContext(AuthContext).currentUser;
+};
+
+export const useCurrentUserLoading = () => {
+  return React.useContext(AuthContext).loading;
 };

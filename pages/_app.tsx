@@ -1,6 +1,10 @@
 import { AppProps } from "next/dist/shared/lib/router/router";
 import { useRouter } from "next/router";
-import { AuthProvider, useCurrentUser } from "../src/api/firebaseAuth";
+import {
+  AuthProvider,
+  useCurrentUser,
+  useCurrentUserLoading,
+} from "../src/api/firebaseAuth";
 import React from "react";
 import "../styles/global.css";
 
@@ -17,10 +21,12 @@ const AppInit: React.FC = () => {
   const currentUser = useCurrentUser();
   const router = useRouter();
   const isSignUpPage = router.asPath.startsWith("/sign_up");
+  const currentUserLoading = useCurrentUserLoading();
 
-  React.useEffect(() => {
-    if (!currentUser && !isSignUpPage) router.push("/login");
-  }, []);
+  // React.useEffect(() => {
+  //   if (!currentUser && !isSignUpPage && !currentUserLoading)
+  //     router.push("/login");
+  // }, [currentUser, isSignUpPage, router, currentUserLoading]);
 
   return null;
 };
