@@ -2,9 +2,13 @@ import { useRouter } from "next/router";
 import React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { signInWithEmailAndPassword } from "../src/api/firebaseAuth";
+import {
+  Login,
+  signInWithEmailAndPassword,
+  signInWithTwitterAuth,
+} from "../src/api/firebaseAuth";
 import FormikForm from "./FormikForm";
-import { IconButton, InputAdornment, Typography } from "@mui/material";
+import { Button, IconButton, InputAdornment, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
@@ -24,7 +28,8 @@ const LoginForm: React.FC = () => {
     async (values) => {
       setLoading(true);
       try {
-        await signInWithEmailAndPassword(values.email, values.password);
+        const aa = await signInWithTwitterAuth();
+        console.log(aa, "aa");
         router.push("/");
       } catch (error) {
         console.log(error);
