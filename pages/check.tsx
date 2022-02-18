@@ -17,19 +17,19 @@ const CheckPage: React.FC = () => {
     <>
       <Box
         sx={{
-          width: 600,
+          // width: 600,/
           mx: "auto",
           p: 5,
-          background: "linear-gradient(blue, pink)",
+          background: "linear-gradient(#3232e0, #3cc0fd)",
           borderRadius: 4,
-          height: "100%",
+          height: 700,
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography sx={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
             診断アプリ
           </Typography>
-          <MenuIcon sx={{ fontSize: 30, color: "white" }} />
+          <MenuIcon sx={{ fontSize: 40, color: "white" }} />
         </Box>
         {isChecked ? (
           <Box sx={{ textAlign: "center" }}>
@@ -44,7 +44,18 @@ const CheckPage: React.FC = () => {
             <Typography sx={{ color: "white", fontSize: 25 }}>
               \ネガティブ度100%！！//
             </Typography>
-            <Card elevation={10} sx={{ mt: 3, minWidth: 275, p: 4 }}>
+            <Card
+              elevation={10}
+              sx={{
+                borderRadius: 10,
+                mt: 3,
+                minWidth: 275,
+                px: 4,
+                py: 7,
+                width: "80%",
+                mx: "auto",
+              }}
+            >
               <CardContent>
                 <Typography
                   sx={{ fontSize: 14, mb: 2 }}
@@ -63,7 +74,7 @@ const CheckPage: React.FC = () => {
               sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
-                width: "80%",
+                width: "50%",
                 mt: 5,
                 mx: "auto",
               }}
@@ -73,9 +84,10 @@ const CheckPage: React.FC = () => {
                 sx={{
                   mt: 5,
                   ml: 1,
-                  bgcolor: "white",
-                  color: "black",
-                  borderRadius: 4,
+                  background:
+                    "linear-gradient(to bottom right,#ff4800, yellow)",
+                  color: "white",
+                  borderRadius: 7,
                   width: 200,
                   height: 50,
                   fontWeight: "bold",
@@ -91,7 +103,7 @@ const CheckPage: React.FC = () => {
                   mt: 5,
                   bgcolor: "white",
                   color: "black",
-                  borderRadius: 4,
+                  borderRadius: 7,
                   width: 200,
                   height: 50,
                   fontWeight: "bold",
@@ -106,13 +118,15 @@ const CheckPage: React.FC = () => {
         ) : (
           <>
             <Box sx={{ textAlign: "center" }}>
-              {/* <img src="icon.png" style={{ width: 500 }} /> */}
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
               <Typography
-                sx={{ color: "white", fontWeight: "bold", fontSize: 30 }}
+                sx={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  mt: 10,
+                }}
               >
-                褒め褒め性格診断
+                ホメホメ性格診断
               </Typography>
               <Typography
                 sx={{
@@ -129,38 +143,31 @@ const CheckPage: React.FC = () => {
                     textAlign: "center",
                     letterSpacing: 2,
                     borderBottom: "2px solid #fff",
-                    color: "#398ac9",
+                    color: "white",
                     marginRight: 10,
                   }}
                 >
                   10,000
                 </span>
-                人が褒め褒め性格診断！！
+                人がホメホメ性格診断！！
               </Typography>
               <Typography
                 sx={{ color: "white", fontWeight: "bold", fontSize: 20 }}
               >
                 Twitterからあなたの隠れた性格を探ってみませんか？
               </Typography>
-              <Typography
-                sx={{ color: "white", fontWeight: "bold", fontSize: 30 }}
-              >
-                あなたを見つける。
-              </Typography>
-              <Typography
-                sx={{ color: "white", fontWeight: "bold", fontSize: 30 }}
-              >
-                あなたが見つける。
-              </Typography>
               <Button
                 variant="contained"
                 sx={{
-                  mt: 5,
-                  bgcolor: "white",
-                  color: "black",
-                  borderRadius: 4,
-                  width: 200,
-                  height: 50,
+                  mt: 10,
+                  background:
+                    "linear-gradient(to bottom right,#ff4800, yellow)",
+                  color: "white",
+                  borderRadius: 25,
+                  width: 500,
+                  height: 100,
+                  size: 150,
+                  fontSize: 30,
                   fontWeight: "bold",
                   "&:hover": { bgcolor: "white" },
                 }}

@@ -2,11 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import {
-  Login,
-  signInWithEmailAndPassword,
-  signInWithTwitterAuth,
-} from "../src/api/firebaseAuth";
 import FormikForm from "./FormikForm";
 import { Button, IconButton, InputAdornment, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -28,8 +23,6 @@ const LoginForm: React.FC = () => {
     async (values) => {
       setLoading(true);
       try {
-        const aa = await signInWithTwitterAuth();
-        console.log(aa, "aa");
         router.push("/");
       } catch (error) {
         console.log(error);
