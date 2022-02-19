@@ -99,6 +99,7 @@ const TopPage: React.FC = () => {
   const router = useRouter();
   const { oauth_token, oauth_verifier } = router.query;
   const [currentUserStatus, setCurrentUserStatus] = React.useState("");
+  console.log(CheckStatus["positive40"]["key"]);
 
   const handleSubmit = React.useCallback(async () => {
     try {
@@ -111,6 +112,8 @@ const TopPage: React.FC = () => {
     }
   }, [router]);
 
+  console.log(currentUserStatus, "currentUserStatus");
+
   const handleResult = React.useCallback(async () => {
     try {
       const params = {
@@ -118,6 +121,7 @@ const TopPage: React.FC = () => {
         oauth_verifier: oauth_verifier as string,
       };
       const response = await result(params);
+      console.log(response, "response")
       setCurrentUserStatus(response);
       setIsChecked(true);
     } catch (error) {
@@ -159,9 +163,9 @@ const TopPage: React.FC = () => {
             </Typography>
             <Typography sx={{ color: "white", fontSize: 25 }}>
               \
-              {CheckStatus[currentUserStatus]
-                ? CheckStatus[currentUserStatus]["key"]
-                : ""}
+              {CheckStatus[currentUserStatus as string]
+                ? CheckStatus[currentUserStatus as string]["key"]
+                : "sfkepjfgoerjgoejro"}
               ！！//
             </Typography>
             <Card
@@ -185,9 +189,9 @@ const TopPage: React.FC = () => {
                   あなたの性格は...
                 </Typography>
                 <Typography sx={{ fontSize: 20 }} component="div">
-                  {CheckStatus[currentUserStatus]
-                    ? CheckStatus[currentUserStatus]["label"]
-                    : ""}
+                  {CheckStatus[currentUserStatus as string]
+                    ? CheckStatus[currentUserStatus as string]["label"]
+                    : "aaaa"}
                 </Typography>
               </CardContent>
             </Card>
