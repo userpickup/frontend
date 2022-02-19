@@ -20,7 +20,7 @@ type Params = {
 };
 
 export const result = async (params: Params) => {
-  const response: string = await apiClient.get(`/result`, {
+  const response = await apiClient.get(`/result`, {
     params: params,
   });
 

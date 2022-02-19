@@ -99,7 +99,6 @@ const TopPage: React.FC = () => {
   const router = useRouter();
   const { oauth_token, oauth_verifier } = router.query;
   const [currentUserStatus, setCurrentUserStatus] = React.useState("");
-  console.log(CheckStatus["positive40"]["key"]);
 
   const handleSubmit = React.useCallback(async () => {
     try {
@@ -107,12 +106,8 @@ const TopPage: React.FC = () => {
       router.push(
         `https://api.twitter.com/oauth/authenticate?oauth_token=${response.data.token}`
       );
-    } catch (error) {
-      console.log(error, "error");
-    }
+    } catch (error) {}
   }, [router]);
-
-  console.log(currentUserStatus, "currentUserStatus");
 
   const handleResult = React.useCallback(async () => {
     try {
@@ -121,8 +116,7 @@ const TopPage: React.FC = () => {
         oauth_verifier: oauth_verifier as string,
       };
       const response = await result(params);
-      console.log(response, "response")
-      setCurrentUserStatus(response);
+      setCurrentUserStatus(response.data);
       setIsChecked(true);
     } catch (error) {
       console.log(error, "error");
@@ -165,7 +159,7 @@ const TopPage: React.FC = () => {
               \
               {CheckStatus[currentUserStatus as string]
                 ? CheckStatus[currentUserStatus as string]["key"]
-                : "sfkepjfgoerjgoejro"}
+                : ""}
               ！！//
             </Typography>
             <Card
@@ -191,7 +185,7 @@ const TopPage: React.FC = () => {
                 <Typography sx={{ fontSize: 20 }} component="div">
                   {CheckStatus[currentUserStatus as string]
                     ? CheckStatus[currentUserStatus as string]["label"]
-                    : "aaaa"}
+                    : ""}
                 </Typography>
               </CardContent>
             </Card>
