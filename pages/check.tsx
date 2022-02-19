@@ -1,6 +1,7 @@
 import { Button, Typography, Box, CardContent, Card } from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import Link from "next/link";
 
 const CheckPage: React.FC = () => {
   const [isChecked, setIsChecked] = React.useState<boolean>(false);
@@ -177,9 +178,9 @@ const CheckPage: React.FC = () => {
               </Button>
             </Box>
             <Box sx={{ textAlign: "center", mt: 2 }}>
-              <a style={{ color: "white" }} href="/">
-                プライバシーポリシー
-              </a>
+              <Link href="/">
+                <a style={{ color: "white" }}>プライバシーポリシー</a>
+              </Link>
             </Box>
           </>
         )}
