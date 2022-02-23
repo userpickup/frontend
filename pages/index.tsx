@@ -255,20 +255,7 @@ const TopPage: React.FC = () => {
                   mb: 10,
                 }}
               >
-                <span
-                  style={{
-                    paddingLeft: 10,
-                    paddingRight: 10,
-                    textAlign: "center",
-                    letterSpacing: 2,
-                    borderBottom: "2px solid #fff",
-                    color: "white",
-                    marginRight: 10,
-                  }}
-                >
-                  10,000
-                </span>
-                人がホメホメ性格診断！！
+                たくさんの人がホメホメ性格診断をしています！！
               </Typography>
               <Typography
                 sx={{ color: "white", fontWeight: "bold", fontSize: 20 }}
