@@ -7,13 +7,23 @@ import {
 } from "../src/api/firebaseAuth";
 import React from "react";
 import "../styles/global.css";
+import Head from "next/head";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <AuthProvider>
-      <Component {...pageProps} />
-      <AppInit />
-    </AuthProvider>
+    <>
+      <Head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOGGLE_ADSENSE}`}
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
+      <AuthProvider>
+        <Component {...pageProps} />
+        <AppInit />
+      </AuthProvider>
+    </>
   );
 };
 
